@@ -1,16 +1,16 @@
 const readline = require('readline');
 const Deck = require('./Deck');
+const Player = require('./Player');
 
 module.exports = class Blackjack {
   constructor() {
-    this.playerBankroll = 1000;
     this.betAmount = 0;
 
     this.deck = new Deck();
     this.deck.shuffle();
 
-    this.playerHand = [];
-    this.dealerHand = [];
+    this.player = new Player();
+    this.dealer = new Player();
 
     this.input = readline.createInterface({
       input: process.stdin,
@@ -32,23 +32,44 @@ module.exports = class Blackjack {
   }
 
   keepPlaying() {
-    return this.playerBankroll > 0
+    return this.player.bankroll > 0
   }
 
   takeBets() {
-    console.log(`Available bankroll: ${this.playerBankroll}`);
+    console.log(`Available bankroll: ${this.player.bankroll}`);
     this.input.question('How much would you like to bet?\n', answer => {
-      this.playerBankroll -= parseInt(answer);
+      this.player.bankroll -= parseInt(answer);
       this.betAmount = parseInt(answer);
     });
   }
 
   dealHands() {
-    this.playerHand = this.deck.draw(2);
-    this.dealerHand = this.deck.draw(2);
+    this.player.hand = this.deck.draw(2);
+    this.dealer.hand = this.deck.draw(2);
   }
 
   playOutHands() {
+    const blackjack = this.dealer.handValue() == 21 || this.player.handValue() == 21;
+
+    if (!blackjack) {
+      let liveHand = true;
+      while (this.player.handValue() < 22 && liveHand) {
+        this.printHands({hideDealerCard: true});
+        this.input.question('Enter H for hit or S for stay.\n', action => {
+          if (action == 'H') {
+            this.player.hand += this.deck.draw(1);
+          } else if (action == 'S') {
+            while (this.dealer.handValue() < 17) {
+              this.dealer.hand += this.deck.draw(1);
+            }
+            liveHand = false;
+          }
+        });
+      }
+    }
+  }
+
+  printHands(opts) {
 
   }
 
