@@ -14,7 +14,8 @@ module.exports = class Deck {
         cards.push({
           suit,
           value,
-          numValue: this.numValue(value)
+          numValue: this.numValue(value),
+          str: value + suit
         });
       }
     }

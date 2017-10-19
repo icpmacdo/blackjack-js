@@ -69,8 +69,15 @@ module.exports = class Blackjack {
     }
   }
 
-  printHands(opts) {
+  printHands(opts={}) {
+    const dealerHand = this.dealer.hand.map(card => card.str);
+    if (opts.hideDealerCard) {
+      dealerHand[0] = '(hidden)';
+    }
+    const playerHand = this.dealer.hand.map(card => card.str);
 
+    console.log(`Dealer has: ${dealerHand.join(' ')}`);
+    console.log(`Player has: ${playerHand.join(' ')}`);
   }
 
   makePayouts() {
