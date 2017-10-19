@@ -81,6 +81,19 @@ module.exports = class Blackjack {
   }
 
   makePayouts() {
+    this.printHands();
 
+    const pVal = this.player.handValue();
+    const dVal = this.dealer.handValue();
+
+    if (dVal > 21 || (dVal < pVal && pVal < 22)) {
+      console.log('You win!');
+      this.player.bankroll -= this.betAmount * 2;
+    } else if (dVal == pVal) {
+      console.log('Push!');
+      this.player.bankroll -= this.betAmount;
+    } else {
+      console.log('You lose.');
+    }
   }
 };
