@@ -1,21 +1,28 @@
 **Deck.js**
 
-For the `createCards` method I made an array of all the suits and values. Then use
-a nested loop to create all combinations of suits and values.
+For the `draw` method we need to:
 
-For representing cards I've decided to use an object. I think strings would be
-too inflexible. What if we want to add more properties, for example the card's
-numeric value? On the other hand I don't think a `Card` class is necessary
-because I don't see a card needing any methods, it's just data.
+1. get the last `n` cards
+2. set `this.cards` to everything but the last `n` cards
+3. return the last `n` cards
 
-I also added the `shuffle` method. You can try to read the code but honestly I just
-copied it from the first result on google. Normally I would have just downloaded
-a third party library but I didn't want to get into that for this tutorial. In
-general you should never copy/paste code, but I do recommend using third party
-libraries liberally (Don't reinvent the wheel!).
+We do this using array slicing which is very flexible and useful.
+Check the references below for more details.
 
 #### Follow Along
-Next let's finish the `draw` method.
+
+Next let's get back to the `Blackjack` class and work on the `playOutHands`
+method. This is probably the most complex method in this tutorial, so it would
+be good to carefully consider the list of steps this method will take. I
+consider `playOutHands` to be done when there are no more actions to take and
+no more cards to be drawn. If you want a refresher on the rules of blackjack
+check the link below. Finally, we won't be implementing special actions like
+*double down*, *split*, or *insurance*, but I encourage you to give it a shot
+at the end of this tutorial.
+
 
 #### References
-[How can I shuffle an array?](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array)
+
+[How to play blackjack](http://www.bicyclecards.com/how-to-play/blackjack/)
+
+[MDN web docs: Array.prototype.slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)

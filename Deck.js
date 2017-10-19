@@ -19,7 +19,9 @@ module.exports = class Deck {
   }
 
   draw(n) {
-
+    const drawnCards = this.cards.slice(-n);
+    this.cards = this.cards.slice(0, -n);
+    return drawnCards;
   }
 
   shuffle() {
