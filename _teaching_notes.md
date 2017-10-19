@@ -1,24 +1,24 @@
 **Blackjack.js**
 
-Let's try describing what needs to happen in the `startGame` method.
+First let's describe what we want to happen in the `takeBets` method:
 
-1. Show a welcome message to the player
-2. Take bets
-3. Deal hands to the player and dealer
-4. Play out the hands until there is no more action
-5. Pay out the winner
-6. Repeat 2-5
+1. Show the player how much they have in their bankroll.
+2. Ask the player how much they want to bet.
+3. Reduce the player's bankroll by the bet amount.
+4. Save the bet amount so you can pay out later.
 
-Now what we need to do is translate these requirements into code. You can see
-that our code matches our description fairly closely. My rule of thumb is that
-if any steps would require more than 5-10 lines of code it should be in its own
-method. This has two major benefits:
+None of these things look like they should be handled by another object. They're
+also simple enough to code directly without creating any new methods.
 
-1. The code is more readable.
-2. We break down a big problem into multiple smaller problems.
+We use the builtin `readlines` library to get the user input. We also used backticks
+for string interpolation. See references for usage.
 
 #### Follow Along
 
-Now we implement our new methods one by one. Let's start with the `keepPlaying`
-method. As before try to describe what should happen and then write it
-out in code.
+Next let's try to implement `dealHands`.
+
+#### References
+
+[Template literals (backtick strings)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
+
+[Node.js v8.7.0 Documentation: readline](https://nodejs.org/api/readline.html)

@@ -1,6 +1,14 @@
+const readline = require('readline');
+
 module.exports = class Blackjack {
   constructor() {
     this.playerBankroll = 1000;
+    this.betAmount = 0;
+
+    this.input = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
   }
 
   startGame() {
@@ -21,7 +29,11 @@ module.exports = class Blackjack {
   }
 
   takeBets() {
-
+    console.log(`Available bankroll: ${this.playerBankroll}`);
+    this.input.question('How much would you like to bet?\n', answer => {
+      this.playerBankroll -= parseInt(answer);
+      this.betAmount = parseInt(answer);
+    });
   }
 
   dealHands() {
