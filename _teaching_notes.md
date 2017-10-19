@@ -1,30 +1,24 @@
-Hello!
-
-In this tutorial I want to teach you how to build projects using
-*object-oriented programming* (OOP). We'll do this by building a small blackjack
-game that you can play in your terminal.
-
-**main.js**
-
-This file will run our game if we enter this in the terminal:
-```
-node main.js
-```
-All this file does is instantiate a `Blackjack` object, and then call `start_game`.
-
 **Blackjack.js**
 
-In OOP we break down our program into objects. I often start with just one
-object and one method. In this case we have just the `Blackjack` object and the
-`start_game` method. As the program becomes more complex we will break it down
-into smaller objects and methods later. How to do that will be the focus of this
-tutorial.
+Let's try describing what needs to happen in the `startGame` method.
 
+1. Show a welcome message to the player
+2. Take bets
+3. Deal hands to the player and dealer
+4. Play out the hands until there is no more action
+5. Pay out the winner
+6. Repeat 2-5
+
+Now what we need to do is translate these requirements into code. You can see
+that our code matches our description fairly closely. My rule of thumb is that
+if any steps would require more than 5-10 lines of code it should be in its own
+method. This has two major benefits:
+
+1. The code is more readable.
+2. We break down a big problem into multiple smaller problems.
 
 #### Follow Along
-Next we need to complete the `start_game` method. Try describing what you think
-needs to happen when this method is called.
 
-#### References
-
-[How to play blackjack](http://www.bicyclecards.com/how-to-play/blackjack)
+Now we implement our new methods one by one. Let's start with the `keepPlaying`
+method. As before try to describe what should happen and then write it
+out in code.
