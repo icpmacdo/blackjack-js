@@ -96,4 +96,14 @@ module.exports = class Blackjack {
       console.log('You lose.');
     }
   }
+
+  cleanup() {
+    this.betAmount = 0;
+
+    this.player.hand = [];
+    this.dealer.hand = [];
+
+    this.deck = Deck();
+    this.deck.shuffle();
+  }
 };
