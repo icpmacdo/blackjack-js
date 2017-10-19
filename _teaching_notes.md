@@ -1,23 +1,21 @@
-**Blackjack.js**
+**Deck.js**
 
-Let's think about what needs to happen in `dealHands`:
+For the `createCards` method I made an array of all the suits and values. Then use
+a nested loop to create all combinations of suits and values.
 
-1. We need to create cards
-2. We need to draw cards and deal cards randomly
-3. We need to store the cards as player and dealer hands
+For representing cards I've decided to use an object. I think strings would be
+too inflexible. What if we want to add more properties, for example the card's
+numeric value? On the other hand I don't think a `Card` class is necessary
+because I don't see a card needing any methods, it's just data.
 
-One way we could do this is to add methods to the `Blackjack` class like `createCards`,
-`shuffleCards`, `dealCards`. But our `Blackjack` class is getting long and all
-these methods are related to cards so it seems like a good place to create a new
-`Deck` class.
-
-Assuming we have a `Deck` class, now what needs to happen is:
-
-1. Create a `Deck` object and  shuffle it
-2. In `dealHands` draw cards from the deck and...
-3. Assign the cards to `this.playerHand` and `this.dealerHand`
+I also added the `shuffle` method. You can try to read the code but honestly I just
+copied it from the first result on google. Normally I would have just downloaded
+a third party library but I didn't want to get into that for this tutorial. In
+general you should never copy/paste code, but I do recommend using third party
+libraries liberally (Don't reinvent the wheel!).
 
 #### Follow Along
-We need to complete the methods that have been setup in the `Deck` class. Let's
-start with `createCards`. Think about how you want cards to be represented. A
-string? An object? A class?
+Next let's finish the `draw` method.
+
+#### References
+[How can I shuffle an array?](https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array)
