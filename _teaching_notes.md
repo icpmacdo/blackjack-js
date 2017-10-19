@@ -1,24 +1,23 @@
 **Blackjack.js**
 
-First let's describe what we want to happen in the `takeBets` method:
+Let's think about what needs to happen in `dealHands`:
 
-1. Show the player how much they have in their bankroll.
-2. Ask the player how much they want to bet.
-3. Reduce the player's bankroll by the bet amount.
-4. Save the bet amount so you can pay out later.
+1. We need to create cards
+2. We need to draw cards and deal cards randomly
+3. We need to store the cards as player and dealer hands
 
-None of these things look like they should be handled by another object. They're
-also simple enough to code directly without creating any new methods.
+One way we could do this is to add methods to the `Blackjack` class like `createCards`,
+`shuffleCards`, `dealCards`. But our `Blackjack` class is getting long and all
+these methods are related to cards so it seems like a good place to create a new
+`Deck` class.
 
-We use the builtin `readlines` library to get the user input. We also used backticks
-for string interpolation. See references for usage.
+Assuming we have a `Deck` class, now what needs to happen is:
+
+1. Create a `Deck` object and  shuffle it
+2. In `dealHands` draw cards from the deck and...
+3. Assign the cards to `this.playerHand` and `this.dealerHand`
 
 #### Follow Along
-
-Next let's try to implement `dealHands`.
-
-#### References
-
-[Template literals (backtick strings)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
-
-[Node.js v8.7.0 Documentation: readline](https://nodejs.org/api/readline.html)
+We need to complete the methods that have been setup in the `Deck` class. Let's
+start with `createCards`. Think about how you want cards to be represented. A
+string? An object? A class?
