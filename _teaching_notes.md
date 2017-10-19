@@ -1,27 +1,21 @@
-**Blackjack.js**
+**Deck.js**
 
-Let's list what needs to happen in `playOutHands`:
+Before we can get a hand's value we should be able to get a single card's value.
+So I've added a `numValue` property to each card. Note that an Ace always has
+numValue of 11.
 
-1. If either player or dealer has 21, the round ends immediately
-2. Otherwise we show the player and dealer hands, which one card hidden for the dealer
-3. We ask the player whether they want to hit or stand
-4. If player hits we draw them a new card
-5. 2-4 happens until player stands or busts (has more than 21)
-6. If player stands, dealer draws 0 or more cards until he has at least 17
+**Player.js**
 
-There's quite a lot going on there, but if you look at the code closely you'll
-see that we were able to match our written requirements almost line for line.
+Now we can write out `handValue`. Here is my strategy for solving the problem
+with evaluating Aces:
 
-Another big change is that I've added a `Player` class and refactored some of our
-old methods. Before I said that only keeping track of the player's bankroll
-didn't justify creating a new class. But now a player also has a hand, and now
-we would like a method that returns the numeric value of a player's hand. So it's
-starting to feel like the `Blackjack` class is doing too many player related
-things.
+1. First sum all non-Ace card values
+2. Then try to add 11 for each Ace, but if we go over 21 we only add 1 instead
+3. Return the sum
+
+This time it's a little harder to see this is what we're doing but read the code
+carefully and try to follow its logic.
 
 #### Follow Along
-We'll need to implement our two new methods: `handValue` and `printHands`. Let's
-start with `handValue` in the `Player` class which should give us the numeric
-sum value of a player's hand. Think carefully about this because we have to
-account for the possibility of one or more Aces. Aces can have a value of 1 or
-11, whichever gives the highest hand value under 22.
+Next let's go back to `Blackjack.py` and finish the `printHands` method. This
+time the tricky part is accounting for the dealer's hidden card.

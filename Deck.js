@@ -11,11 +11,25 @@ module.exports = class Deck {
 
     for (let suit of suits) {
       for (let value of values) {
-        cards.push({suit, value});
+        cards.push({
+          suit,
+          value,
+          numValue: this.numValue(value)
+        });
       }
     }
 
     return cards;
+  }
+
+  numValue(value) {
+    if (['J', 'Q', 'K'].includes(value)) {
+      return 10;
+    } else if (value === 'A') {
+      return 11;
+    } else {
+      return parseInt(value);
+    }
   }
 
   draw(n) {
